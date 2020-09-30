@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Copyright hksabade10
 
 
 #include "Tank.h"
@@ -15,7 +15,7 @@ ATank::ATank()
 	PrimaryActorTick.bCanEverTick = false;
 
 	TankAimingComponent = CreateDefaultSubobject<UTankAimingComponent>("Aiming Component");
-	TankMovementComponent = CreateDefaultSubobject<UTankMovementComponent>("Movement Component");
+	// TankMovementComponent = CreateDefaultSubobject<UTankMovementComponent>("Movement Component");
 
 }
 

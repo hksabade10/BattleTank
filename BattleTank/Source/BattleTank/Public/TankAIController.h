@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Copyright hksabade10
 
 #pragma once
 
@@ -21,5 +21,9 @@ public:
 	virtual void BeginPlay() override;
 
 	virtual void Tick(float DeltaSeconds) override;
+
+private:
+
+	float AcceptanceRadius = 1000.f;
 
 };

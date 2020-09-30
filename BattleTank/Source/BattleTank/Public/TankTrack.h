@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Copyright hksabade10
 
 #pragma once
 
@@ -22,6 +22,6 @@ public:
 
 	// Max force per track in Newtons(N)
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
-	float MaxDrivingForce = 40000.f;
+	float MaxDrivingForce = 20000000.f;
 	
 };

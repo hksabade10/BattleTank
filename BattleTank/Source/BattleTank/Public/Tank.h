@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Copyright hksabade10
 
 #pragma once
 
@@ -28,8 +28,8 @@ protected:
 
 	UTankAimingComponent* TankAimingComponent = nullptr;
 
-	UPROPERTY(BlueprintReadOnly)
-	UTankMovementComponent* TankMovementComponent = nullptr;
+	// UPROPERTY(BlueprintReadOnly)
+	// UTankMovementComponent* TankMovementComponent = nullptr;
 
 
 

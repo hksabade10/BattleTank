@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Copyright hksabade10
 
 
 #include "TankAIController.h"
@@ -44,6 +44,7 @@ void ATankAIController::Tick(float DeltaSeconds)
 	if(PlayerTank)
 	{
 		// Move towards the player
+		MoveToActor(PlayerTank, AcceptanceRadius);
 
 		// Aim at the player
 		ControlledTank->AimAt(PlayerTank->GetActorLocation());
