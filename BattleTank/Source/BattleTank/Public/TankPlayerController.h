@@ -7,7 +7,6 @@
 #include "TankPlayerController.generated.h"
 
 class UTankAimingComponent;
-class ATank;
 
 /**
  * 
@@ -24,9 +23,6 @@ public:
 	virtual void Tick(float DeltaSeconds) override;
 
 protected:
-	
-	UFUNCTION(BlueprintCallable, Category = "Setup")
-	ATank* GetControlledTank() const;
 
 	UFUNCTION(BlueprintImplementableEvent, Category = "Setup")
 	void SetTankAimingReference(UTankAimingComponent* AimCompRef);
@@ -49,5 +45,7 @@ private:
 
 	UPROPERTY(EditDefaultsOnly)
 	float LineTraceLength = 1000000.f;
+
+	UTankAimingComponent* AimingComponent = nullptr;
 	
 };
