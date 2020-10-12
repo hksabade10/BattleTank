@@ -10,7 +10,6 @@ class UTankBarrel;
 class UTankTurret;
 class AProjectile;
 class UTankAimingComponent;
-class UTankMovementComponent;
 
 UCLASS()
 class BATTLETANK_API ATank : public APawn
@@ -26,31 +25,18 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	UPROPERTY(BlueprintReadOnly)
 	UTankAimingComponent* TankAimingComponent = nullptr;
-
-	// UPROPERTY(BlueprintReadOnly)
-	// UTankMovementComponent* TankMovementComponent = nullptr;
-
-
-
 
 public:	
 
-	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	void AimAt(FVector HitLocation);
 
 	UFUNCTION(BlueprintCallable, Category = "Setup")
 	void Fire();
 
-	UFUNCTION(BlueprintCallable, Category = "Setup")
-	void SetBarrelReference(UTankBarrel* Barrel);
-
-	UFUNCTION(BlueprintCallable, Category = "Setup")
-	void SetTurretReference(UTankTurret* Turret);
-
-	UTankBarrel* Barrel = nullptr;
+	void Initialise(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet);
 
 private:
 
@@ -58,6 +44,7 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
 	TSubclassOf<AProjectile> Projectile;
 
+	// TODO remove once firing is removed from aiming comp
 	UPROPERTY(EditDefaultsOnly, Category = "Firing")
 	float LaunchSpeed = 10000.f;
 
@@ -65,6 +52,9 @@ private:
 	float ReloadTimeSeconds = 3.f;
 
 	double LastFireTime = 0.f;
+
+
+	UTankBarrel* Barrel = nullptr;		// TODO remove local Barrel reference
 
 	
 

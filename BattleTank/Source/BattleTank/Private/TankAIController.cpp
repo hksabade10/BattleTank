@@ -12,7 +12,7 @@ void ATankAIController::BeginPlay()
 	ATank* ControlledTank = Cast<ATank>(GetPawn());
 
 	
-	if(!ControlledTank)
+	if(!ensure(ControlledTank))
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Tank is not possessed by AIController!"));
 	}
@@ -22,7 +22,7 @@ void ATankAIController::BeginPlay()
 	}
 	
 	ATank* PlayerTank = Cast<ATank> (GetWorld()->GetFirstPlayerController()->GetPawn());
-	if(!PlayerTank)
+	if(!ensure(PlayerTank))
 	{
 		UE_LOG(LogTemp, Warning, TEXT("AIContoller unable to find PlayerTank!"));
 	}
@@ -41,7 +41,7 @@ void ATankAIController::Tick(float DeltaSeconds)
 	ATank* ControlledTank = Cast<ATank>(GetPawn());
 	ATank* PlayerTank = Cast<ATank> (GetWorld()->GetFirstPlayerController()->GetPawn());
 	
-	if(PlayerTank)
+	if(!ensure(PlayerTank))
 	{
 		// Move towards the player
 		MoveToActor(PlayerTank, AcceptanceRadius);
