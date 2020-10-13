@@ -25,7 +25,10 @@ public:
 private:
 
 	UTankAimingComponent* AimingComponent = nullptr;
-	
-	float AcceptanceRadius = 1000.f;
+
+protected:
+
+	UPROPERTY(EditDefaultsOnly, Category = "Setup")
+	float AcceptanceRadius = 5000.f;
 
 };

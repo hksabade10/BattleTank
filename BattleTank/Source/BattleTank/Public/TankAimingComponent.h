@@ -15,8 +15,8 @@ enum class EFiringState : uint8
 {
 	Reloading,
 	Aiming,
-	Locked
-	
+	Locked,
+	OutOffAmmo
 };
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
@@ -34,11 +34,16 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Setup")
 	void Initialise(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet);
 
+	EFiringState GetFiringState();
+
 	// TODO Try AimAt as BlueprintCallable
 	void AimAt(FVector HitLocation);
 
 	UFUNCTION(BlueprintCallable, Category = "Setup")
 	void Fire();
+
+	UFUNCTION(BlueprintCallable, Category = "Setup")
+	int32 GetCurrentRounds() const;
 
 protected:
 	// Called when the game starts
@@ -49,7 +54,9 @@ protected:
 
 private:
 
-	void AimBarrelTowards(FVector AimDirection);
+	void AimBarrelTowards(FVector Direction);
+
+	bool IsBarrelMoving();
 
 	UTankBarrel* Barrel = nullptr;
 
@@ -66,6 +73,12 @@ private:
 
 	double LastFireTime = 0.f;
 
+	FVector AimDirection;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Firing")
+	int32 TotalRounds = 5;
+
+	int32 CurrentRounds = TotalRounds;
 
 };
 
